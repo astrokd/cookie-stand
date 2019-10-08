@@ -81,7 +81,7 @@ var GreenWood = {
     //cust # array
     this.customerPerHour = this.hourTotals();
 
-    console.log('string',this.customerPerHour);
+    // console.log('string',this.customerPerHour);
     //total cookies
     var totalCookies = this.customerPerHour[0];
     for(var x = 1; x < this.customerPerHour.length; x++) {
