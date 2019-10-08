@@ -15,7 +15,7 @@ function getRandomIntArray(min,max,count) {
 var parentEl = document.getElementById('parentElement');
 
 //********Shop 1*************** */
-
+//Phinny
 var Phinny = {
   shopLocation: 'Phinny Ridge',
   minHourlyCustomers: 5,
@@ -23,99 +23,97 @@ var Phinny = {
   avgCookiesPerCustomer: 10,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
-  hourTotals: function () {
+  cookiesPerHour: [],
+  totalCookiesPerDay: 0,
+  custPerHourTotals: function() {
     return getRandomIntArray(this.minHourlyCustomers,this.maxHourlyCustomers,this.shopHours.length);
   },
-
-  totalCookiesForDay: function() {
-    //cust # array
-    this.customerPerHour = this.hourTotals();
-
-    console.log('string',this.customerPerHour);
-    //total cookies
-    var totalCookies = this.customerPerHour[0];
-    for(var x = 1; x < this.customerPerHour.length; x++) {
-      totalCookies += (this.customerPerHour[x] * this.avgCookiesPerCustomer);
+  cookPerHourTotals: function() {
+    this.customerPerHour = this.custPerHourTotals();
+    for (var y = 0;y < this.customerPerHour.length;y++) {
+      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
     }
-
-    //Total cookies returned
-    //Aggregate of all customers multiplied by averge per customer
-    return totalCookies;
+    return this.cookiesPerHour;
   },
-  renderLocation: function() {
+  totCookPerDay: function() {
+    for (var x = 0;x < this.cookiesPerHour.length;x++) {
+      this.totalCookiesPerDay += this.cookiesPerHour[x];
+    }
+    return this.totalCookiesPerDay;
+  },
+  render: function() {
+    //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
     parentEl.appendChild(childElName);
-  },
-  renderTotal: function() {
-    var childElTotal = document.createElement('div');
-    childElTotal.textContent = `Total: ${this.totalCookiesForDay()} cookies`;
-    parentEl.appendChild(childElTotal);
-  },
-  renderHours: function() {
-    for(var i = 0; i < this.shopHours.length; i++) {
+    //render hour and cookies for hour
+    for(var i = 0;i < this.shopHours.length;i++) {
       var childElHours = document.createElement('li');
-      childElHours.textContent = `${this.shopHours[i]}: ${this.customerPerHour[i] * this.avgCookiesPerCustomer}  cookies`;
+      childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
       parentEl.appendChild(childElHours);
     }
-  }
+    // render total cookies
+    var childElTotal = document.createElement('div');
+    childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
+    parentEl.appendChild(childElTotal);
+
+  },
 };
-Phinny.renderLocation();
-Phinny.renderTotal();
-Phinny.renderHours();
+Phinny.cookPerHourTotals();
+Phinny.totCookPerDay();
+Phinny.render();
 
 //********Shop 2*************** */
-
+//GreenWood
 var GreenWood = {
-  shopLocation: 'Greenwood',
+  shopLocation: 'GreenWood',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
   avgCookiesPerCustomer: 10,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
-  hourTotals: function () {
+  cookiesPerHour: [],
+  totalCookiesPerDay: 0,
+  custPerHourTotals: function() {
     return getRandomIntArray(this.minHourlyCustomers,this.maxHourlyCustomers,this.shopHours.length);
   },
-
-  totalCookiesForDay: function() {
-    //cust # array
-    this.customerPerHour = this.hourTotals();
-
-    // console.log('string',this.customerPerHour);
-    //total cookies
-    var totalCookies = this.customerPerHour[0];
-    for(var x = 1; x < this.customerPerHour.length; x++) {
-      totalCookies += (this.customerPerHour[x] * this.avgCookiesPerCustomer);
+  cookPerHourTotals: function() {
+    this.customerPerHour = this.custPerHourTotals();
+    for (var y = 0;y < this.customerPerHour.length;y++) {
+      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
     }
-
-    //Total cookies returned
-    //Aggregate of all customers multiplied by averge per customer
-    return totalCookies;
+    return this.cookiesPerHour;
   },
-  renderLocation: function() {
+  totCookPerDay: function() {
+    for (var x = 0;x < this.cookiesPerHour.length;x++) {
+      this.totalCookiesPerDay += this.cookiesPerHour[x];
+    }
+    return this.totalCookiesPerDay;
+  },
+  render: function() {
+    //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
     parentEl.appendChild(childElName);
-  },
-  renderTotal: function() {
-    var childElTotal = document.createElement('div');
-    childElTotal.textContent = `Total: ${this.totalCookiesForDay()} cookies`;
-    parentEl.appendChild(childElTotal);
-  },
-  renderHours: function() {
-    for(var i = 0; i < this.shopHours.length; i++) {
+    //render hour and cookies for hour
+    for(var i = 0;i < this.shopHours.length;i++) {
       var childElHours = document.createElement('li');
-      childElHours.textContent = `${this.shopHours[i]}: ${this.customerPerHour[i] * this.avgCookiesPerCustomer}  cookies`;
+      childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
       parentEl.appendChild(childElHours);
     }
-  }
+    // render total cookies
+    var childElTotal = document.createElement('div');
+    childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
+    parentEl.appendChild(childElTotal);
+
+  },
 };
-GreenWood.renderLocation();
-GreenWood.renderTotal();
-GreenWood.renderHours();
+GreenWood.cookPerHourTotals();
+GreenWood.totCookPerDay();
+GreenWood.render();
 
 //********Shop 3*************** */
-
+//Ballard
 var Ballard = {
   shopLocation: 'Ballard',
   minHourlyCustomers: 5,
@@ -123,49 +121,48 @@ var Ballard = {
   avgCookiesPerCustomer: 10,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
-  hourTotals: function () {
+  cookiesPerHour: [],
+  totalCookiesPerDay: 0,
+  custPerHourTotals: function() {
     return getRandomIntArray(this.minHourlyCustomers,this.maxHourlyCustomers,this.shopHours.length);
   },
-
-  totalCookiesForDay: function() {
-    //cust # array
-    this.customerPerHour = this.hourTotals();
-
-    console.log('string',this.customerPerHour);
-    //total cookies
-    var totalCookies = this.customerPerHour[0];
-    for(var x = 1; x < this.customerPerHour.length; x++) {
-      totalCookies += (this.customerPerHour[x] * this.avgCookiesPerCustomer);
+  cookPerHourTotals: function() {
+    this.customerPerHour = this.custPerHourTotals();
+    for (var y = 0;y < this.customerPerHour.length;y++) {
+      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
     }
-
-    //Total cookies returned
-    //Aggregate of all customers multiplied by averge per customer
-    return totalCookies;
+    return this.cookiesPerHour;
   },
-  renderLocation: function() {
+  totCookPerDay: function() {
+    for (var x = 0;x < this.cookiesPerHour.length;x++) {
+      this.totalCookiesPerDay += this.cookiesPerHour[x];
+    }
+    return this.totalCookiesPerDay;
+  },
+  render: function() {
+    //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
     parentEl.appendChild(childElName);
-  },
-  renderTotal: function() {
-    var childElTotal = document.createElement('div');
-    childElTotal.textContent = `Total: ${this.totalCookiesForDay()} cookies`;
-    parentEl.appendChild(childElTotal);
-  },
-  renderHours: function() {
-    for(var i = 0; i < this.shopHours.length; i++) {
+    //render hour and cookies for hour
+    for(var i = 0;i < this.shopHours.length;i++) {
       var childElHours = document.createElement('li');
-      childElHours.textContent = `${this.shopHours[i]}: ${this.customerPerHour[i] * this.avgCookiesPerCustomer}  cookies`;
+      childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
       parentEl.appendChild(childElHours);
     }
-  }
+    // render total cookies
+    var childElTotal = document.createElement('div');
+    childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
+    parentEl.appendChild(childElTotal);
+
+  },
 };
-Ballard.renderLocation();
-Ballard.renderTotal();
-Ballard.renderHours();
+Ballard.cookPerHourTotals();
+Ballard.totCookPerDay();
+Ballard.render();
 
 //********Shop 4*************** */
-
+//WestSeattle
 var WestSeattle = {
   shopLocation: 'West Seattle',
   minHourlyCustomers: 5,
@@ -173,93 +170,91 @@ var WestSeattle = {
   avgCookiesPerCustomer: 10,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
-  hourTotals: function () {
+  cookiesPerHour: [],
+  totalCookiesPerDay: 0,
+  custPerHourTotals: function() {
     return getRandomIntArray(this.minHourlyCustomers,this.maxHourlyCustomers,this.shopHours.length);
   },
-
-  totalCookiesForDay: function() {
-    //cust # array
-    this.customerPerHour = this.hourTotals();
-
-    console.log('string',this.customerPerHour);
-    //total cookies
-    var totalCookies = this.customerPerHour[0];
-    for(var x = 1; x < this.customerPerHour.length; x++) {
-      totalCookies += (this.customerPerHour[x] * this.avgCookiesPerCustomer);
+  cookPerHourTotals: function() {
+    this.customerPerHour = this.custPerHourTotals();
+    for (var y = 0;y < this.customerPerHour.length;y++) {
+      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
     }
-
-    //Total cookies returned
-    //Aggregate of all customers multiplied by averge per customer
-    return totalCookies;
+    return this.cookiesPerHour;
   },
-  renderLocation: function() {
+  totCookPerDay: function() {
+    for (var x = 0;x < this.cookiesPerHour.length;x++) {
+      this.totalCookiesPerDay += this.cookiesPerHour[x];
+    }
+    return this.totalCookiesPerDay;
+  },
+  render: function() {
+    //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
     parentEl.appendChild(childElName);
-  },
-  renderTotal: function() {
-    var childElTotal = document.createElement('div');
-    childElTotal.textContent = `Total: ${this.totalCookiesForDay()} cookies`;
-    parentEl.appendChild(childElTotal);
-  },
-  renderHours: function() {
-    for(var i = 0; i < this.shopHours.length; i++) {
+    //render hour and cookies for hour
+    for(var i = 0;i < this.shopHours.length;i++) {
       var childElHours = document.createElement('li');
-      childElHours.textContent = `${this.shopHours[i]}: ${this.customerPerHour[i] * this.avgCookiesPerCustomer}  cookies`;
+      childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
       parentEl.appendChild(childElHours);
     }
-  }
+    // render total cookies
+    var childElTotal = document.createElement('div');
+    childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
+    parentEl.appendChild(childElTotal);
+
+  },
 };
-WestSeattle.renderLocation();
-WestSeattle.renderTotal();
-WestSeattle.renderHours();
+WestSeattle.cookPerHourTotals();
+WestSeattle.totCookPerDay();
+WestSeattle.render();
 
 //********Shop 5*************** */
-
+//DownTown
 var DownTown = {
-  shopLocation: 'Downtown',
+  shopLocation: 'DownTown',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
   avgCookiesPerCustomer: 10,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
-  hourTotals: function () {
+  cookiesPerHour: [],
+  totalCookiesPerDay: 0,
+  custPerHourTotals: function() {
     return getRandomIntArray(this.minHourlyCustomers,this.maxHourlyCustomers,this.shopHours.length);
   },
-
-  totalCookiesForDay: function() {
-    //cust # array
-    this.customerPerHour = this.hourTotals();
-
-    console.log('string',this.customerPerHour);
-    //total cookies
-    var totalCookies = this.customerPerHour[0];
-    for(var x = 1; x < this.customerPerHour.length; x++) {
-      totalCookies += (this.customerPerHour[x] * this.avgCookiesPerCustomer);
+  cookPerHourTotals: function() {
+    this.customerPerHour = this.custPerHourTotals();
+    for (var y = 0;y < this.customerPerHour.length;y++) {
+      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
     }
-
-    //Total cookies returned
-    //Aggregate of all customers multiplied by averge per customer
-    return totalCookies;
+    return this.cookiesPerHour;
   },
-  renderLocation: function() {
+  totCookPerDay: function() {
+    for (var x = 0;x < this.cookiesPerHour.length;x++) {
+      this.totalCookiesPerDay += this.cookiesPerHour[x];
+    }
+    return this.totalCookiesPerDay;
+  },
+  render: function() {
+    //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
     parentEl.appendChild(childElName);
-  },
-  renderTotal: function() {
-    var childElTotal = document.createElement('div');
-    childElTotal.textContent = `Total: ${this.totalCookiesForDay()} cookies`;
-    parentEl.appendChild(childElTotal);
-  },
-  renderHours: function() {
-    for(var i = 0; i < this.shopHours.length; i++) {
+    //render hour and cookies for hour
+    for(var i = 0;i < this.shopHours.length;i++) {
       var childElHours = document.createElement('li');
-      childElHours.textContent = `${this.shopHours[i]}: ${this.customerPerHour[i] * this.avgCookiesPerCustomer}  cookies`;
+      childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
       parentEl.appendChild(childElHours);
     }
-  }
+    // render total cookies
+    var childElTotal = document.createElement('div');
+    childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
+    parentEl.appendChild(childElTotal);
+
+  },
 };
-DownTown.renderLocation();
-DownTown.renderTotal();
-DownTown.renderHours();
+DownTown.cookPerHourTotals();
+DownTown.totCookPerDay();
+DownTown.render();
