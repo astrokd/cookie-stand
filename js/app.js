@@ -2,7 +2,7 @@
 // Global Variable
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 var allStores = [];
-var allStoresTotal = 0;
+Shop.allStoresTotal = 0;
 
 var tableBody = document.getElementById('tableElement');
 
@@ -136,10 +136,10 @@ var renderFooterRow = function() {
 
     for ( var j = 0 ; j < allStores.length ; j++) {
       storesHourlyTotals += allStores[j].cookiesPerHour[i];
-      console.log(allStores[j].cookiesPerHour[i]);
     }
     td.textContent = storesHourlyTotals;
     trEl.appendChild(td);
+    Shop.allStoresTotal += storesHourlyTotals;
   }
 
   var tdElem = document.createElement('td');
@@ -163,6 +163,5 @@ var DownTown = new Shop('Downtown', 10, 35, 6.3);
 // Ballard.render();
 // WestSeattle.render();
 // DownTown.render();
-
 
 renderFooterRow();
