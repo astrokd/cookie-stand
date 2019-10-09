@@ -6,14 +6,25 @@ var allStoresTotal = 0;
 
 var tableBody = document.getElementById('tableElement');
 
-// var renderHeader = function() {
-//   for (var i = 0;i<hours.length;i++) {
-//     var thEl = document.createElement('th');
-//     thEl.textContent = hours[i];
-//     tableBody.appendChild(thEl);
-//   }
-// };
-// renderHeader();
+//Render Table LAB07
+var renderHeaderRow = function() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Location';
+  trEl.appendChild(thEl);
+
+  for(var i = 0; i < hours.length; i++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = hours[i];
+    trEl.appendChild(tdEl);
+  }
+
+  var tdElem = document.createElement('td');
+  tdElem.textContent = 'Total';
+  trEl.appendChild(tdElem);
+  tableBody.appendChild(trEl);
+};
+renderHeaderRow();
 
 // Helper Function
 function getRandomIntArray(min,max,count) {
@@ -39,6 +50,8 @@ function Shop(shopLocation, minHourlyCustomers, maxHourlyCustomers, avgCookiesPe
   this.cookiesPerHour = [];
   this.totalCookiesPerDay = 0;
   allStores.push(this);
+  this.cookPerHourTotals();
+  this.totCookPerDay();
 }
 
 //**** Prototype functions ****/
@@ -68,8 +81,8 @@ Shop.prototype.totCookPerDay = function() {
 //Render location name, cookies per hour and total cookies to li tag
 Shop.prototype.render = function() {
   //call cookie hours and totals
-  this.cookPerHourTotals();
-  this.totCookPerDay();
+  // this.cookPerHourTotals();
+  //this.totCookPerDay();
   //render location
   var childElName = document.createElement('div');
   childElName.textContent = ` ${this.shopLocation} `;
@@ -107,22 +120,10 @@ Ballard.render();
 WestSeattle.render();
 DownTown.render();
 
-//Render Table LAB07
-var renderHeaderRow = function() {
+Shop.prototype.renderShopRow = function() {
+  //create elements
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  thEl.textContent = 'Location';
-  trEl.appendChild(thEl);
-
-  for(var i = 0; i < hours.length; i++) {
-    var tdEl = document.createElement('td');
-    tdEl.textContent = hours[i];
-    trEl.appendChild(tdEl);
-  }
-
-  var tdElem = document.createElement('td');
-  tdElem.textContent = 'Total';
-  trEl.appendChild(tdElem);
-  tableBody.appendChild(trEl);
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.shopLocation;
 };
-renderHeaderRow();
+
