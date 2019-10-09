@@ -1,5 +1,6 @@
 'use strict';
 
+// Helper Function
 function getRandomIntArray(min,max,count) {
   var numArray =[0];
   for (var i = 0;i < count;i++) {
@@ -20,7 +21,7 @@ var Phinny = {
   shopLocation: 'Phinny Ridge',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -31,7 +32,7 @@ var Phinny = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -42,6 +43,9 @@ var Phinny = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+    this.cookPerHourTotals();
+    this.totCookPerDay();
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
@@ -59,8 +63,6 @@ var Phinny = {
 
   },
 };
-Phinny.cookPerHourTotals();
-Phinny.totCookPerDay();
 Phinny.render();
 
 //********Shop 2*************** */
@@ -69,7 +71,7 @@ var GreenWood = {
   shopLocation: 'GreenWood',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -80,7 +82,7 @@ var GreenWood = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -91,6 +93,9 @@ var GreenWood = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+    this.cookPerHourTotals();
+    this.totCookPerDay();
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
@@ -108,8 +113,6 @@ var GreenWood = {
 
   },
 };
-GreenWood.cookPerHourTotals();
-GreenWood.totCookPerDay();
 GreenWood.render();
 
 //********Shop 3*************** */
@@ -118,7 +121,7 @@ var Ballard = {
   shopLocation: 'Ballard',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -129,7 +132,7 @@ var Ballard = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -140,6 +143,9 @@ var Ballard = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+    this.cookPerHourTotals();
+    this.totCookPerDay();
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
@@ -157,8 +163,6 @@ var Ballard = {
 
   },
 };
-Ballard.cookPerHourTotals();
-Ballard.totCookPerDay();
 Ballard.render();
 
 //********Shop 4*************** */
@@ -167,7 +171,7 @@ var WestSeattle = {
   shopLocation: 'West Seattle',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -178,7 +182,7 @@ var WestSeattle = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -189,6 +193,9 @@ var WestSeattle = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+    this.cookPerHourTotals();
+    this.totCookPerDay();
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
@@ -206,8 +213,6 @@ var WestSeattle = {
 
   },
 };
-WestSeattle.cookPerHourTotals();
-WestSeattle.totCookPerDay();
 WestSeattle.render();
 
 //********Shop 5*************** */
@@ -216,7 +221,7 @@ var DownTown = {
   shopLocation: 'DownTown',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -227,7 +232,7 @@ var DownTown = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -238,6 +243,9 @@ var DownTown = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+    this.cookPerHourTotals();
+    this.totCookPerDay();
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
@@ -255,6 +263,4 @@ var DownTown = {
 
   },
 };
-DownTown.cookPerHourTotals();
-DownTown.totCookPerDay();
 DownTown.render();
