@@ -3,6 +3,11 @@
 // Global Variable
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
+var tableBody = document.getElementById('tableElement');
+var thEl = document.createElement('th');
+thEl.textContent = 'Salmon Cookies Header';
+tableBody.appendChild(thEl);
+
 // Helper Function
 function getRandomIntArray(min,max,count) {
   var numArray =[0];
