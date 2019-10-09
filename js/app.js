@@ -1,8 +1,7 @@
 'use strict';
-
 // Global Variable
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
-
+var allStores = [];
 var tableBody = document.getElementById('tableElement');
 
 var renderHeader = function() {
@@ -37,6 +36,7 @@ function Shop(shopLocation, minHourlyCustomers, maxHourlyCustomers, avgCookiesPe
   this.customerPerHour = [];
   this.cookiesPerHour = [];
   this.totalCookiesPerDay = 0;
+  allStores.push(this);
 }
 
 //**** Prototype functions ****/
