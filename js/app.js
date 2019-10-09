@@ -173,6 +173,10 @@ function sayHello() {
   console.log('hello from sayHello');
 }
 
+function createShop(newLocation,newMin,newMax,newAvg) {
+  var newShop = new Shop(newLocation,newMin,newMax,newAvg);
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   var location = event.target.inputLocation.value;
@@ -181,4 +185,5 @@ function handleSubmit(event) {
   var avg = event.target.inputAvgCookPerCust.value;
   sayHello();
   console.log(event.target.inputLocation.value);
+  createShop(location,min,max,avg);
 }
