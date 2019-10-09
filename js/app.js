@@ -52,6 +52,7 @@ function Shop(shopLocation, minHourlyCustomers, maxHourlyCustomers, avgCookiesPe
   allStores.push(this);
   this.cookPerHourTotals();
   this.totCookPerDay();
+  this.renderShopRow();
 }
 
 //**** Prototype functions ****/
@@ -99,6 +100,26 @@ Shop.prototype.render = function() {
   parentEl.appendChild(childElTotal);
 };
 
+Shop.prototype.renderShopRow = function() {
+  //create elements
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.shopLocation;
+  trEl.appendChild(tdEl);
+
+  //loop over the length of hourlycookiestotal
+  for(var i =0; i<this.cookiesPerHour.length; i++) {
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesPerHour[i];
+    trEl.appendChild(tdEl);
+  }
+  //show total by accessing totalCookies
+  var tdElem = document.createElement('td');
+  tdElem.textContent = this.totalCookiesPerDay;
+  trEl.appendChild(tdElem);
+  tableBody.appendChild(trEl);
+};
+
 //********Shop 1******Phinny********* */
 var Phinny = new Shop('Phinny Ridge', 5, 20, 7.8);
 
@@ -114,16 +135,10 @@ var WestSeattle = new Shop('West Seattle', 6, 20, 8.8);
 //********Shop 5*******DownTown******** */
 var DownTown = new Shop('Downtown', 10, 35, 6.3);
 
-Phinny.render();
-GreenWood.render();
-Ballard.render();
-WestSeattle.render();
-DownTown.render();
+// Phinny.render();
+// GreenWood.render();
+// Ballard.render();
+// WestSeattle.render();
+// DownTown.render();
 
-Shop.prototype.renderShopRow = function() {
-  //create elements
-  var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.shopLocation;
-};
 
