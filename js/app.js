@@ -2,16 +2,18 @@
 // Global Variable
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 var allStores = [];
+var allStoresTotal = 0;
+
 var tableBody = document.getElementById('tableElement');
 
-var renderHeader = function() {
-  for (var i = 0;i<hours.length;i++) {
-    var thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    tableBody.appendChild(thEl);
-  }
-};
-renderHeader();
+// var renderHeader = function() {
+//   for (var i = 0;i<hours.length;i++) {
+//     var thEl = document.createElement('th');
+//     thEl.textContent = hours[i];
+//     tableBody.appendChild(thEl);
+//   }
+// };
+// renderHeader();
 
 // Helper Function
 function getRandomIntArray(min,max,count) {
@@ -63,7 +65,7 @@ Shop.prototype.totCookPerDay = function() {
   return this.totalCookiesPerDay;
 };
 
-//Render location name, cookies per hour and total cookies
+//Render location name, cookies per hour and total cookies to li tag
 Shop.prototype.render = function() {
   //call cookie hours and totals
   this.cookPerHourTotals();
@@ -105,3 +107,22 @@ Ballard.render();
 WestSeattle.render();
 DownTown.render();
 
+//Render Table LAB07
+var renderHeaderRow = function() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Location';
+  trEl.appendChild(thEl);
+
+  for(var i = 0; i < hours.length; i++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = hours[i];
+    trEl.appendChild(tdEl);
+  }
+
+  var tdElem = document.createElement('td');
+  tdElem.textContent = 'Total';
+  trEl.appendChild(tdElem);
+  tableBody.appendChild(trEl);
+};
+renderHeaderRow();

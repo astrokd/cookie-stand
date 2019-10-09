@@ -1,0 +1,15 @@
+/* * {
+    border: 1px solid black;
+} */
+
+body {
+    margin: 5px;
+	padding: 30px;
+    border: 5px;
+}
+table {
+    border-spacing: 8px;
+    margin: 5px;
+	padding: 30px;
+    border: 5px;
+}
