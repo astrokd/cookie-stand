@@ -1,5 +1,6 @@
 'use strict';
 
+// Helper Function
 function getRandomIntArray(min,max,count) {
   var numArray =[0];
   for (var i = 0;i < count;i++) {
@@ -20,7 +21,7 @@ var Phinny = {
   shopLocation: 'Phinny Ridge',
   minHourlyCustomers: 5,
   maxHourlyCustomers: 20,
-  avgCookiesPerCustomer: 10,
+  avgCookiesPerCustomer: 8.8,
   shopHours: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
   customerPerHour: [],
   cookiesPerHour: [],
@@ -31,7 +32,7 @@ var Phinny = {
   cookPerHourTotals: function() {
     this.customerPerHour = this.custPerHourTotals();
     for (var y = 0;y < this.customerPerHour.length;y++) {
-      this.cookiesPerHour.push(this.customerPerHour[y] * this.avgCookiesPerCustomer);
+      this.cookiesPerHour.push(Math.ceil(this.customerPerHour[y] * this.avgCookiesPerCustomer));
     }
     return this.cookiesPerHour;
   },
@@ -42,6 +43,8 @@ var Phinny = {
     return this.totalCookiesPerDay;
   },
   render: function() {
+    //call cookie hours and totals
+
     //render location
     var childElName = document.createElement('div');
     childElName.textContent = ` ${this.shopLocation} `;
