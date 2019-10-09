@@ -6,7 +6,7 @@ var allStoresTotal = 0;
 
 var tableBody = document.getElementById('tableElement');
 
-//Render Table LAB07
+//****** Render Header Row
 var renderHeaderRow = function() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
@@ -100,6 +100,7 @@ Shop.prototype.render = function() {
   parentEl.appendChild(childElTotal);
 };
 
+//******** Render Shop Row */
 Shop.prototype.renderShopRow = function() {
   //create elements
   var trEl = document.createElement('tr');
@@ -118,23 +119,45 @@ Shop.prototype.renderShopRow = function() {
   tdElem.textContent = this.totalCookiesPerDay;
   trEl.appendChild(tdElem);
   tableBody.appendChild(trEl);
+
 };
 
-//********Shop 1******Phinny********* */
+//******* Render Footer Row */
+var renderFooterRow = function() {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Hourly Totals: ';
+  trEl.appendChild(tdEl);
+  console.log(hours.length);
+
+  for( var i = 0;i < hours.length; i++) {
+    var storesHourlyTotals = 0;
+    var td = document.createElement('td');
+
+    for ( var j = 0 ; j < allStores.length ; j++) {
+      storesHourlyTotals += allStores[j].cookiesPerHour[i];
+      console.log(allStores[j].cookiesPerHour[i]);
+    }
+    td.textContent = storesHourlyTotals;
+    trEl.appendChild(td);
+  }
+
+  var tdElem = document.createElement('td');
+  tdElem.textContent = Shop.allStoresTotal;
+  trEl.appendChild(tdElem);
+  tableBody.appendChild(trEl);
+};
+
+//console.log(allStores.length);
+
+//********Shop instances********* */
 var Phinny = new Shop('Phinny Ridge', 5, 20, 7.8);
-
-//********Shop 2******GreenWood********* */
 var GreenWood = new Shop('Greenwood', 6, 25, 8.5);
-
-//********Shop 3******Ballard********* */
 var Ballard = new Shop('Ballard', 8, 22, 9.1);
-
-//********Shop 4*******WestSeattle******** */
 var WestSeattle = new Shop('West Seattle', 6, 20, 8.8);
-
-//********Shop 5*******DownTown******** */
 var DownTown = new Shop('Downtown', 10, 35, 6.3);
 
+//console.log(allStores.length);
 // Phinny.render();
 // GreenWood.render();
 // Ballard.render();
@@ -142,3 +165,4 @@ var DownTown = new Shop('Downtown', 10, 35, 6.3);
 // DownTown.render();
 
 
+renderFooterRow();
