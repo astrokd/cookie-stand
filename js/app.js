@@ -108,11 +108,11 @@ var renderFooterRow = function() {
   tdEl.textContent = 'Hourly Totals: ';
   trEl.appendChild(tdEl);
   console.log(hours.length);
-
+  //increment through each hour
   for( var i = 0;i < hours.length; i++) {
     var storesHourlyTotals = 0;
     var td = document.createElement('td');
-
+    //total allstores for current hour
     for ( var j = 0 ; j < allStores.length ; j++) {
       storesHourlyTotals += allStores[j].cookiesPerHour[i];
     }
@@ -120,7 +120,7 @@ var renderFooterRow = function() {
     trEl.appendChild(td);
     Shop.allStoresTotal += storesHourlyTotals;
   }
-
+  //assign last cell to allStoresTotal value
   var tdElem = document.createElement('td');
   tdElem.textContent = Shop.allStoresTotal;
   trEl.appendChild(tdElem);
@@ -137,33 +137,33 @@ new Shop('Downtown', 10, 35, 6.3);
 var userForm = document.getElementById('user-form');
 userForm.addEventListener('submit', handleSubmit);
 
-function sayHello() {
-  console.log('hello from sayHello');
-}
-
 function handleSubmit(event) {
   event.preventDefault();
   var location = event.target.inputLocation.value;
-  var min = event.target.inputMinCustPerHr.value;
-  var max = event.target.inputMaxCustPerHr.value;
+  var min = null;
+  var max = null;
+  min = event.target.inputMinCustPerHr.value;
+  max = event.target.inputMaxCustPerHr.value;
   var avg = event.target.inputAvgCookPerCust.value;
-  sayHello();
-  //var footer = document.getElementById('footer');
-  var footer = document.getElementById('footer');
-  footer.parentNode.remove(footer);
-  new Shop(location,min,max,avg);
-  renderFooterRow();
+  //Write input to table
 
-  if (isNaN(min) || isNaN(max) || isNaN(avg)) {
-    alert('please enter a number');
+  if (max < min) {
+    console.log(`min = ${min} : max = ${max}`);
+    alert('Maximum Customers Per Hour should be greater the Minimum');
     event.target.inputMinCustPerHr.value = null;
     event.target.inputMaxCustPerHr.value = null;
-    event.target.inputAvgCookPerCust.value = null;
-  }
-  if (location === null || min === null || max === null || avg === null) {
-    alert('please enter values');
+    min = null;
+    max = null;
   }
 
+  if (location !== null && min !== null && max !== null && avg !== null) {
+    var footer = document.getElementById('footer');
+    footer.parentNode.remove(footer);
+    new Shop(location,min,max,avg);
+    renderFooterRow();
+  } else {
+    alert('please enter values');
+  }
 }
 
 renderFooterRow();
