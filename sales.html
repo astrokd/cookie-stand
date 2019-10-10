@@ -8,8 +8,26 @@
     <body>
         <header>
             <h1> Salmon Cookies cookie stand Sales </h1>
+            <hr />
         </header>
         <table id="tableElement"></table>
+        <hr />
+        <h2>Forms & Events</h2>
+        <form id="user-form">
+            <fieldset>
+                <label>Enter Location Here:</label>
+                <input id="inputLocation" type="text" placeholder="location" required><br>
+                <label>Minimum Customers Per Hour</label>
+                <input id="inputMinCustPerHr" type="number" placeholder="min" min="0" required><br>
+                <label>Maximum Customers Per Hour</label>
+                <input id="inputMaxCustPerHr" type="number" placeholder="max" min="0" required><br>
+                <label>Average Cookies Per Customer</label>
+                <input id="inputAvgCookPerCust" type="number" step="0.1" placeholder="avg" required><br>
+                <button value="submit">Submit</button>
+            </fieldset>
+        </form>
+
         <script src="js/app.js"></script>
+
     </body>
 </html>
