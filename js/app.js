@@ -37,8 +37,6 @@ function getRandomIntArray(min,max,count) {
   return numArray;
 }
 
-// var parentEl = document.getElementById('parentElement');
-
 //**** Constructor Function *****/
 function Shop(shopLocation, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer) {
   this.shopLocation = shopLocation;
@@ -79,27 +77,6 @@ Shop.prototype.totCookPerDay = function() {
   return this.totalCookiesPerDay;
 };
 
-// //Render location name, cookies per hour and total cookies to li tag
-// Shop.prototype.render = function() {
-//   //call cookie hours and totals
-//   // this.cookPerHourTotals();
-//   //this.totCookPerDay();
-//   //render location
-//   var childElName = document.createElement('div');
-//   childElName.textContent = ` ${this.shopLocation} `;
-//   parentEl.appendChild(childElName);
-//   //render hour and cookies for hour
-//   for(var i = 0;i < this.shopHours.length;i++) {
-//     var childElHours = document.createElement('li');
-//     childElHours.textContent = `${this.shopHours[i]}: ${this.cookiesPerHour[i]} cookies`;
-//     parentEl.appendChild(childElHours);
-//   }
-//   // render total cookies
-//   var childElTotal = document.createElement('div');
-//   childElTotal.textContent = `Total: ${this.totalCookiesPerDay} cookies`;
-//   parentEl.appendChild(childElTotal);
-// };
-
 //******** Render Shop Row */
 Shop.prototype.renderShopRow = function() {
   //create elements
@@ -126,6 +103,7 @@ Shop.prototype.renderShopRow = function() {
 var renderFooterRow = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
+  tdEl.id = 'footer';
   tdEl.textContent = 'Hourly Totals: ';
   trEl.appendChild(tdEl);
   console.log(hours.length);
@@ -148,33 +126,18 @@ var renderFooterRow = function() {
   tableBody.appendChild(trEl);
 };
 
-//console.log(allStores.length);
-
 //********Shop instances********* */
-var Phinny = new Shop('Phinny Ridge', 5, 20, 7.8);
-var GreenWood = new Shop('Greenwood', 6, 25, 8.5);
-var Ballard = new Shop('Ballard', 8, 22, 9.1);
-var WestSeattle = new Shop('West Seattle', 6, 20, 8.8);
-var DownTown = new Shop('Downtown', 10, 35, 6.3);
-
-//console.log(allStores.length);
-// Phinny.render();
-// GreenWood.render();
-// Ballard.render();
-// WestSeattle.render();
-// DownTown.render();
-
-renderFooterRow();
+new Shop('Phinny Ridge', 5, 20, 7.8);
+new Shop('Greenwood', 6, 25, 8.5);
+new Shop('Ballard', 8, 22, 9.1);
+new Shop('West Seattle', 6, 20, 8.8);
+new Shop('Downtown', 10, 35, 6.3);
 
 var userForm = document.getElementById('user-form');
 userForm.addEventListener('submit', handleSubmit);
 
 function sayHello() {
   console.log('hello from sayHello');
-}
-
-function createShop(newLocation,newMin,newMax,newAvg) {
-  var newShop = new Shop(newLocation,newMin,newMax,newAvg);
 }
 
 function handleSubmit(event) {
@@ -184,6 +147,11 @@ function handleSubmit(event) {
   var max = event.target.inputMaxCustPerHr.value;
   var avg = event.target.inputAvgCookPerCust.value;
   sayHello();
-  console.log(event.target.inputLocation.value);
-  createShop(location,min,max,avg);
+  //var footer = document.getElementById('footer');
+  var footer = document.getElementById('footer');
+  footer.parentNode.remove(footer);
+  new Shop(location,min,max,avg);
+  renderFooterRow();
 }
+
+renderFooterRow();
