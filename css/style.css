@@ -7,9 +7,13 @@ body {
 	padding: 30px;
     border: 5px;
 }
-table {
+table, th, td {
+    border: 1px solid black;
     border-spacing: 8px;
     margin: 5px;
-	padding: 30px;
+	padding: 3px;
     border: 5px;
+  }
+#header {
+    font-weight: bold;
 }

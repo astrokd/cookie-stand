@@ -11,6 +11,7 @@ var renderHeaderRow = function() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
   thEl.textContent = 'Location';
+  trEl.id = 'header';
   trEl.appendChild(thEl);
 
   for(var i = 0; i < hours.length; i++) {
