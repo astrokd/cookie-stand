@@ -153,6 +153,14 @@ function handleSubmit(event) {
   footer.parentNode.remove(footer);
   new Shop(location,min,max,avg);
   renderFooterRow();
+
+  if (isNaN(min) || isNaN(max) || isNaN(avg)) {
+    alert('please enter a number');
+    event.target.inputMinCustPerHr.value = null;
+    event.target.inputMaxCustPerHr.value = null;
+    event.target.inputAvgCookPerCust.value = null;
+  }
+
 }
 
 renderFooterRow();
