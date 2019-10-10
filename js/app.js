@@ -160,6 +160,9 @@ function handleSubmit(event) {
     event.target.inputMaxCustPerHr.value = null;
     event.target.inputAvgCookPerCust.value = null;
   }
+  if (location === null || min === null || max === null || avg === null) {
+    alert('please enter values');
+  }
 
 }
 
