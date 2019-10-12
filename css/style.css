@@ -1,11 +1,13 @@
+/* https://www.w3schools.com/howto/howto_css_image_text.asp */
 /* * {
     border: 1px solid black;
 } */
 
 body {
-    margin: 5px;
+    width: 960px;
+    margin: 0 auto;
 	padding: 30px;
-    border: 5px;
+    align-content: center;
 }
 table, th, td {
     border: 1px solid black;
@@ -14,8 +16,20 @@ table, th, td {
 	padding: 3px;
     border: 5px;
   }
-#header {
+header {
     font-weight: bold;
+    position: relative;
+    text-align: center;
+}
+header h1 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+}
+header h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
 }
 input:invalid {
     box-shadow: 0 0 0 1px red;
