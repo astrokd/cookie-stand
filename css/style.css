@@ -34,3 +34,32 @@ header h2 {
 input:invalid {
     box-shadow: 0 0 0 1px red;
 }
+#recipe {
+    background-image: url('img/list-bg.png');
+    /* background-color: ivory; */
+    width: 960px;
+    height: 305px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#recipe h2 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    font-size: larger;
+}
+#checkLeft {
+    top: 20%;
+    left: 20%;
+    position: absolute;
+    list-style-type: square;
+}
+#checkRight {
+    top: 20%;
+    right: 20%;
+    position: absolute;
+    list-style-type: square;
+}
