@@ -31,7 +31,7 @@ footer {
     margin-top: 40px;
 }
 footer hr {
-    background: url('/img/salmon-icon.png') no-repeat top center;
+    background: url('img/salmon-icon.png') no-repeat top center;
     background-size: contain;
     content: normal;
     display: block;
@@ -95,7 +95,7 @@ footer hr:after {
     margin-top: 20px;
 }
 #recipe {
-    background-image: url("/img/salmon-pattern.png");
+    background-image: url("img/salmon-pattern.png");
     background-blend-mode: soft-light;
     width: 960px;
     height: 305px; 
