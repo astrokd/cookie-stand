@@ -1,8 +1,12 @@
 /* Text over image: https://www.w3schools.com/howto/howto_css_image_text.asp */
 /* Image on hr:  https://stackoverflow.com/questions/35610251/style-hr-with-image for hr styling */
 /* salmon background from https://dribbble.com/shots/2445408-Salmon */
+/* text outline and shadow https://wpshout.com/quick-guides/create-text-outline-css/ */
 
 /* General styling */
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 body {
     width: 960px;
     margin: 0 auto;
@@ -19,12 +23,15 @@ header h1 {
     top: 20px;
     left: 50%;
     font-family: 'Pangolin', cursive;
-    font-size: xx-large;
-}
-header h2 {
-    position: absolute;
-    bottom: 20px;
-    left: 100px;
+    color: #353643;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* font-weight: 900; */
+    font-size: 35px;
+    text-shadow:
+		-1px -1px 0 ivory,
+		1px -1px 0 ivory,
+		-1px 1px 0 ivory,
+		1px 1px 0 ivory;
 }
 footer {
     margin-top: 40px;
@@ -38,7 +45,7 @@ footer hr {
     height: 50px;
     border: 0;
     position: relative;
-    color: black;
+    color: #0a0606;
 }
 footer hr:before,hr:after {
     content: '';
@@ -63,8 +70,8 @@ footer hr:after {
     width: 960px;
     height: 305px; 
     position: relative;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: larger;
+    color: rgb(21, 18, 19)
 }
 #address h2 {
     position: absolute;
@@ -105,6 +112,7 @@ footer hr:after {
     font-family: 'Pangolin', cursive;
     font-size: larger;
     border-radius: 90px 120px;
+    box-shadow: 20px 20px 2px darksalmon;
 }
 #recipe h2 {
     position: absolute;
@@ -140,12 +148,14 @@ footer hr:after {
 /* sales.html specific styling */
 #tableElement {
     margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(22, 22, 24)
 }
 table, th, td {
-    border: 1px solid black;
+    border: 2px solid #0a0606;
     border-spacing: 8px;
-    margin: 5px;
-	padding: 3px;
+    margin: 5px 8px;
+	padding: 5px 8px;
     border: 5px;
 }
 table tr:first-child {
@@ -166,6 +176,6 @@ table tr:nth-child(even) {
     line-height: 30px;
 }
 input:invalid {
-    box-shadow: 0 0 0 1px red;
+    box-shadow: 0 0 0 1px lightsalmon;
 }
 

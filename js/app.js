@@ -9,20 +9,14 @@ var tableBody = document.getElementById('tableElement');
 //****** Render Header Row
 var renderHeaderRow = function() {
   var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  thEl.textContent = 'Location';
-  trEl.id = 'header';
-  trEl.appendChild(thEl);
+  addElement('th','Location',trEl);
 
   for(var i = 0; i < hours.length; i++) {
-    var tdEl = document.createElement('td');
-    tdEl.textContent = hours[i];
-    trEl.appendChild(tdEl);
+    addElement('th',hours[i],trEl);
   }
 
-  var tdElem = document.createElement('td');
-  tdElem.textContent = 'Total';
-  trEl.appendChild(tdElem);
+  addElement('th','Total',trEl);
+  // Render row to table
   tableBody.appendChild(trEl);
 };
 renderHeaderRow();
@@ -36,6 +30,13 @@ function getRandomIntArray(min,max,count) {
     numArray[i] = Math.floor(Math.random() * (max - min + 1)) + min;
   }
   return numArray;
+}
+
+function addElement(childElType, childContent, parentEl) {
+  var childElement = document.createElement(childElType);
+  childElement.textContent = childContent;
+  parentEl.appendChild(childElement);
+  return childElement;
 }
 
 //**** Constructor Function *****/
@@ -80,59 +81,48 @@ Shop.prototype.totCookPerDay = function() {
 
 //******** Render Shop Row */
 Shop.prototype.renderShopRow = function() {
-  //create elements
+  //create location cell
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.shopLocation;
-  trEl.appendChild(tdEl);
+  addElement('td', this.shopLocation,trEl);
 
   //loop over the length of hourlycookiestotal
   for(var i =0; i<this.cookiesPerHour.length; i++) {
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.cookiesPerHour[i];
-    trEl.appendChild(tdEl);
+    addElement('td',this.cookiesPerHour[i],trEl);
   }
   //show total by accessing totalCookies
-  var tdElem = document.createElement('td');
-  tdElem.textContent = this.totalCookiesPerDay;
-  trEl.appendChild(tdElem);
+  addElement('td',this.totalCookiesPerDay,trEl);
+  // Render row to table
   tableBody.appendChild(trEl);
-
 };
 
 //******* Render Footer Row */
 var renderFooterRow = function() {
   var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
+  var tdEl = addElement('td','Hourly Totals',trEl);
   tdEl.id = 'footer';
-  tdEl.textContent = 'Hourly Totals: ';
-  trEl.appendChild(tdEl);
-  console.log(hours.length);
   //increment through each hour
   for( var i = 0;i < hours.length; i++) {
     var storesHourlyTotals = 0;
-    var td = document.createElement('td');
-    //total allstores for current hour
     for ( var j = 0 ; j < allStores.length ; j++) {
       storesHourlyTotals += allStores[j].cookiesPerHour[i];
     }
-    td.textContent = storesHourlyTotals;
-    trEl.appendChild(td);
+    addElement('td',storesHourlyTotals,trEl);
     Shop.allStoresTotal += storesHourlyTotals;
   }
   //assign last cell to allStoresTotal value
   var tdElem = document.createElement('td');
   tdElem.textContent = Shop.allStoresTotal;
   trEl.appendChild(tdElem);
+  // Render row to table
   tableBody.appendChild(trEl);
 };
 
 //********Shop instances********* */
-new Shop('Phinny Ridge', 5, 20, 7.8);
-new Shop('Greenwood', 6, 25, 8.5);
-new Shop('Ballard', 8, 22, 9.1);
-new Shop('West Seattle', 6, 20, 8.8);
-new Shop('Downtown', 10, 35, 6.3);
+new Shop('Phinny Ridge', 3, 10, 2.8);
+new Shop('Greenwood', 6, 12, 2.5);
+new Shop('Ballard', 5, 10, 2.1);
+new Shop('West Seattle', 4, 9, 1.8);
+new Shop('Downtown', 10, 35, 4.3);
 
 var userForm = document.getElementById('user-form');
 userForm.addEventListener('submit', handleSubmit);
@@ -149,20 +139,18 @@ function handleSubmit(event) {
 
   if (max < min) {
     console.log(`min = ${min} : max = ${max}`);
-    alert('Maximum Customers Per Hour should be greater the Minimum');
     event.target.inputMinCustPerHr.value = null;
     event.target.inputMaxCustPerHr.value = null;
-    min = null;
-    max = null;
+    return alert('Maximum Customers Per Hour should be greater the Minimum');
   }
 
-  if (location !== null && min !== null && max !== null && avg !== null) {
+  if (!location && !min && !max && !avg) {
+    return alert('please enter values');
+  } else {
     var footer = document.getElementById('footer');
     footer.parentNode.remove(footer);
     new Shop(location,min,max,avg);
     renderFooterRow();
-  } else {
-    alert('please enter values');
   }
 }
 
