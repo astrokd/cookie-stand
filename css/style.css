@@ -37,7 +37,7 @@ footer {
     margin-top: 40px;
 }
 footer hr {
-    background: url('/img/sal-icon.png') no-repeat top center;
+    background: url('/img/salicon.png') no-repeat top center;
     background-size: contain;
     content: normal;
     display: block;
@@ -101,7 +101,7 @@ footer hr:after {
     margin-top: 20px;
 }
 #recipe {
-    background-image: url("/img/sal-patt.png");
+    background-image: url("/img/salpatt.png");
     background-color: lightsalmon;
     background-blend-mode: soft-light;
     width: 960px;
