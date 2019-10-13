@@ -1,11 +1,147 @@
-/* * {
-    border: 1px solid black;
-} */
+/* Text over image: https://www.w3schools.com/howto/howto_css_image_text.asp */
+/* Image on hr:  https://stackoverflow.com/questions/35610251/style-hr-with-image for hr styling */
+/* salmon background from https://dribbble.com/shots/2445408-Salmon */
 
+/* General styling */
 body {
-    margin: 5px;
+    width: 960px;
+    margin: 0 auto;
 	padding: 30px;
-    border: 5px;
+    align-content: center;
+    background-color: salmon;
+}
+header {
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+}
+header h1 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    font-family: 'Pangolin', cursive;
+    font-size: xx-large;
+}
+header h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+}
+footer {
+    margin-top: 40px;
+}
+footer hr {
+    background: url('/img/salmon-icon.png') no-repeat top center;
+    background-size: contain;
+    content: normal;
+    display: block;
+    position: relative;
+    height: 50px;
+    border: 0;
+    position: relative;
+    color: black;
+}
+footer hr:before,hr:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: #0a0606;
+    height: 3px;
+    top: 22px;
+}
+footer hr:before {
+    left: 0;
+    right: 50%;
+    margin-right: 85px;
+}
+footer hr:after {
+    right: 0;
+    left: 50%;
+    margin-left: 85px;
+}
+/* index.html specific styling */
+#address {
+    width: 960px;
+    height: 305px; 
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+#address h2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    font-size: x-large;
+    transform: translate(-50%, -50%);
+}
+#addLeft,#addRight {
+    top: 20%;
+    position: absolute;
+    line-height: 40px;
+}
+#addLeft {
+    left: 5%;
+}
+#addRight {
+    right: 15%;
+}
+#hours {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#hours p {
+    margin-top: 20px;
+}
+#recipe {
+    background-image: url("/img/salmon-pattern.png");
+    background-blend-mode: soft-light;
+    width: 960px;
+    height: 305px; 
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
+    position: relative;
+    font-family: 'Pangolin', cursive;
+    font-size: larger;
+    border-radius: 90px 120px;
+}
+#recipe h2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    font-size: x-large;
+    transform: translate(-50%, -50%);
+}
+#checkLeft {
+    top: 15%;
+    left: 20%;
+    position: absolute;
+    list-style-type: square;
+}
+#checkRight {
+    top: 15%;
+    right: 20%;
+    position: absolute;
+    list-style-type: square;
+}
+#recipe h3 {
+    bottom: 35%;
+    left: 50%;
+    position: absolute;
+    font-size: x-large;
+    transform: translate(-50%, -50%);
+}
+#recipe p {
+    bottom: 10%;
+    padding: 10px 40px 10px 40px;
+    position: absolute;
+}
+/* sales.html specific styling */
+#tableElement {
+    margin-left: auto;
+    margin-right: auto;
 }
 table, th, td {
     border: 1px solid black;
@@ -13,10 +149,22 @@ table, th, td {
     margin: 5px;
 	padding: 3px;
     border: 5px;
-  }
-#header {
-    font-weight: bold;
+}
+table tr:first-child {
+    border-collapse: collapse;
+    border: solid thin;
+}
+table tr:last-child {
+    border-collapse: collapse;
+    border: solid thin;
+}
+table tr:nth-child(odd) {
+    background-color: darksalmon;
+}
+#user-form {
+    line-height: 30px;
 }
 input:invalid {
     box-shadow: 0 0 0 1px red;
 }
+
