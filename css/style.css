@@ -102,6 +102,7 @@ footer hr:after {
 }
 #recipe {
     background-image: url("/img/sal-patt.png");
+    background-color: lightsalmon;
     background-blend-mode: soft-light;
     width: 960px;
     height: 305px; 
