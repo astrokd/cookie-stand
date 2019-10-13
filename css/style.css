@@ -117,6 +117,7 @@ footer hr:after {
     font-family: 'Pangolin', cursive;
     font-size: larger;
     border-radius: 90px 120px;
+    box-shadow: 20px 20px 2px grey;
 }
 #recipe h2 {
     position: absolute;
