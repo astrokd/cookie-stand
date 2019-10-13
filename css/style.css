@@ -7,7 +7,6 @@ body {
     width: 960px;
     margin: 0 auto;
 	padding: 30px;
-    align-content: center;
     background-color: salmon;
 }
 header {
@@ -31,7 +30,7 @@ footer {
     margin-top: 40px;
 }
 footer hr {
-    background: url('img/salmon-icon.png') no-repeat top center;
+    background: url('/img/sal-icon.png') no-repeat top center;
     background-size: contain;
     content: normal;
     display: block;
@@ -95,7 +94,7 @@ footer hr:after {
     margin-top: 20px;
 }
 #recipe {
-    background-image: url("img/salmon-pattern.png");
+    background-image: url("/img/sal-patt.png");
     background-blend-mode: soft-light;
     width: 960px;
     height: 305px; 
@@ -140,8 +139,7 @@ footer hr:after {
 }
 /* sales.html specific styling */
 #tableElement {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 table, th, td {
     border: 1px solid black;
@@ -160,6 +158,9 @@ table tr:last-child {
 }
 table tr:nth-child(odd) {
     background-color: darksalmon;
+}
+table tr:nth-child(even) {
+    background-color: lightsalmon;
 }
 #user-form {
     line-height: 30px;
